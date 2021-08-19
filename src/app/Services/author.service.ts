@@ -3,11 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { IAuthor } from "../Interface/Iauthor";
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type' : 'application/json'
-  })
-}
+
 @Injectable({
 providedIn:'root'
 })
@@ -17,23 +13,35 @@ providedIn:'root'
 
 export class AuthorService{
 //BaseURL to my Api.
- baseUrl:string='https://localhost:44328/api/AuthorTestBook'
+ baseUrl:string='https://localhost:44328/api/AurthorTest'
   constructor(private http:HttpClient){//create a property with name http.
   }
 
-
-
-  getAuthors():IAuthor[]
-  {
-    return [
-      { id: 2, firstname: 'Doney', lastname: 'Shrestha' },
-      { id: 3, firstname: 'Sony', lastname: 'Shrestha' }
-    ];
+   httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type' : 'application/json'
+    })
   }
+
 
   getAuthor():Observable<IAuthor[]>
   {
   return this.http.get<IAuthor[]>(this.baseUrl);
   }
 
+   getAuthorById(authorId:number):Observable<IAuthor>{
+     return this.http.get<IAuthor>(`${this.baseUrl}/${authorId}`);
+   }
+
+   deleteAuthor(authorId:number):Observable<boolean>{
+      return this.http.delete<boolean>(`${this.baseUrl}/${authorId}`,this.httpOptions);
+   }
+
+   createAuthor(authorToCreate:IAuthor):Observable<IAuthor>{
+     return this.http.post<IAuthor>(this.baseUrl,authorToCreate,this.httpOptions);
+   }
+
+   updateAuthor(authorId:number,author:IAuthor):Observable<IAuthor>{
+    return this.http.put<IAuthor>(`${this.baseUrl}/${authorId}`,authorId,this.httpOptions)
+   }
 }
