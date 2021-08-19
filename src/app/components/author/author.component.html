@@ -1,1 +1,42 @@
-<p>author works!</p>
+
+<p [ngStyle]="{'color':'red'}">LIST OF AUTHORS FROM THE API!</p>
+
+<div *ngFor="let authorObj of authors">
+  ID: <label for="id">{{authorObj.id}}</label> &nbsp; &nbsp;
+  Firstname: <label for="firstname">{{authorObj.firstname}}</label> &nbsp; &nbsp;
+  Lastname: <label for="lastname">{{authorObj.lastname}}</label> &nbsp;&nbsp;
+
+  <button type="button" (click)="deleteAuthor(authorObj.id)" [ngStyle]="{'color':'red'}">X</button> &nbsp;&nbsp;
+</div>
+
+<div>
+<p [ngStyle]="{'color':'red'}">GET AN AUTHOR BY ID!</p>
+AuthorID: <input form="AuthorID" type="number" #AuthorId >&nbsp;&nbsp;
+<button type="button" (click)="getAuthorById(AuthorId.value)">Get Author</button> &nbsp;&nbsp;
+<br>
+
+<br>
+  ID: <label for="id" id="Id">{{authorID}}</label> &nbsp; &nbsp;
+  Firstname: <label for="firstname">{{authorFN}}</label> &nbsp; &nbsp;
+  Lastname: <label for="lastname">{{authorLN}}</label> &nbsp;&nbsp;
+
+  <button type="button" (click)="deleteAuthor(authorID)" [ngStyle]="{'color':'red'}">X</button> &nbsp;&nbsp;
+
+</div>
+
+<p [ngStyle]="{'color':'red'}">CREATE AN AUTHOR!</p>
+
+<form [formGroup]="profileForm">
+<label for="firstname">First Name : </label> &nbsp; <input type="text" name="" formControlName="firstname">
+<br>
+<br>
+<label for="Lastname">Last Name : </label> &nbsp; <input type="text" name="" formControlName="lastname">
+<br>
+<br>
+<button type="submit" (click)="createAuthor(profileForm.value)">Create Author</button>
+
+</form>
+
+<p [ngStyle]="{'color':'red'}">UPDATE AN AUTHOR!</p>
+
+
