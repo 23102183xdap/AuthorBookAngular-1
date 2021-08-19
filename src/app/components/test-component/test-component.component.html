@@ -1,0 +1,22 @@
+hej med dig
+<!--Interpolation-->
+{{name}}
+{{name2}}
+<button (click)="firstmethod()"> Click me</button>
+<br>
+<br>
+<br>
+<br>
+<!--if sentence-->
+<label *ngIf="false">This is a text</label>
+<label *ngIf="sand">This is a text</label>
+<button>{{author.firstname}}</button>
+<button>{{authors[0].firstname}}</button>
+
+<div  *ngFor="let authorList of authors">
+<label >{{authorList.firstname}}</label>
+</div>
+
+<form class="myForm">
+
+</form>
