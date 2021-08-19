@@ -38,5 +38,18 @@ AuthorID: <input form="AuthorID" type="number" #AuthorId >&nbsp;&nbsp;
 </form>
 
 <p [ngStyle]="{'color':'red'}">UPDATE AN AUTHOR!</p>
+<form [formGroup]="profileForm">
 
+  <label for="firstname">ID : </label> &nbsp; <input type="text" name="" formControlName="id">
+  <br>
+  <br>
+  <label for="firstname">First Name : </label> &nbsp; <input type="text" name="" formControlName="firstname">
+  <br>
+  <br>
+  <label for="Lastname">Last Name : </label> &nbsp; <input type="text" name="" formControlName="lastname">
+  <br>
+  <br>
+  <button type="submit" (click)="updateAuthor(profileForm.value.id,profileForm.value)">Update Author</button>
+
+</form>
 

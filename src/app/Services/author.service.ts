@@ -42,6 +42,6 @@ export class AuthorService{
    }
 
    updateAuthor(authorId:number,author:IAuthor):Observable<IAuthor>{
-    return this.http.put<IAuthor>(`${this.baseUrl}/${authorId}`,authorId,this.httpOptions)
+    return this.http.put<IAuthor>(`${this.baseUrl}/${authorId}`,author,this.httpOptions)
    }
 }

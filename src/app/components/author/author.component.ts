@@ -17,6 +17,7 @@ export class AuthorComponent implements OnInit {
     authorLN='';
    //
    profileForm = this.FB.group({ // After using Formbuilder, Declaring formcontrol is optional. FormBuilder is more practical and best practice.
+     id:(''),
      firstname:(''),
      lastname:('')
    });
@@ -67,7 +68,7 @@ export class AuthorComponent implements OnInit {
    }
 
    updateAuthor(authorId:number,author:IAuthor){
-    this.authorService.updateAuthor(authorId,author).subscribe(data => console.log(data));
+    this.authorService.updateAuthor(authorId,author).subscribe(()=> this.getAuthors());
 
    }
 }
